@@ -8,7 +8,7 @@ from pycaret.regression import setup, compare_models, pull, save_model
 
 
 with st.sidebar:
-    st.image("https://images4.alphacoders.com/110/1102041.jpg")
+    st.image("https://vitalflux.com/wp-content/uploads/2021/09/Python-automl-frameworks.png")
     st.title("AutoStreamML")
     choice = st.radio("Navigation",["Upload", "Profiling", "ML", "Download"])
     st.info("This application allows you to build an Automated Machine learning pipleine using Streamlit, Pandas Profiling and PyCaret")
