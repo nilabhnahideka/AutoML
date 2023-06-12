@@ -33,11 +33,18 @@ if choice == "Profiling":
 
 if choice == "ML":
     chosen_target = st.selectbox('Choose the Target Column', df.columns)
-    if st.button('Run Modelling'): 
+    feature_type = st.radio('Feature Data Type', ['Categorical', 'Numerical'])
+    
+    if st.button('Run Modeling'):
         setup_df = df.copy()
-        setup_df[chosen_target] = setup_df[chosen_target].astype(float)
+
+        # Convert all columns to the specified data type
+        if feature_type == 'Categorical':
+            setup_df = setup_df.astype('category')
+        else:
+            setup_df = setup_df.astype(float)
+
         setup(setup_df, target=chosen_target, silent=True)
-        setup_df[chosen_target] = setup_df[chosen_target].astype('category')
         st.dataframe(setup_df)
         best_model = compare_models()
         compare_df = pull()
