@@ -4,7 +4,7 @@ import os
 import ydata_profiling
 from streamlit_pandas_profiling import st_profile_report
 
-from pycaret.regression import setup, compare_models, pull, save_model
+from pycaret.classification import setup, compare_models, pull, save_model
 
 
 with st.sidebar:
