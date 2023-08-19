@@ -32,10 +32,8 @@ def training_sub_tab():
     st.title("Training Sub-Tab")
     
     with st.sidebar:
-        st.image("https://vitalflux.com/wp-content/uploads/2021/09/Python-automl-frameworks.png")
         st.title("AutoStreamML")
         choice = st.radio("Navigation",["Upload", "Profiling", "ML", "Download"])
-        st.info("This application allows you to build an Automated Machine learning pipeline using Streamlit, Pandas Profiling, and PyCaret")
 
     if os.path.exists("sourcedata.csv"):
         df = pd.read_csv("sourcedata.csv", index_col=None)
@@ -88,7 +86,6 @@ def testing_sub_tab():
         prediction_data = pd.read_csv(prediction_data_file)
         st.dataframe(prediction_data)
 
-        # Choose feature data type
         feature_type = st.radio('Feature Data Type', ['Categorical', 'Numerical'])
 
         if st.button('Make Predictions'):
