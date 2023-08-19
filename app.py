@@ -88,6 +88,7 @@ def testing_sub_tab():
         prediction_data = pd.read_csv(prediction_data_file)
         st.dataframe(prediction_data)
 
+        # Choose feature data type
         feature_type = st.radio('Feature Data Type', ['Categorical', 'Numerical'])
 
         if st.button('Make Predictions'):
