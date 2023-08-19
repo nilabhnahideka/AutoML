@@ -5,7 +5,6 @@ import ydata_profiling
 from streamlit_pandas_profiling import st_profile_report
 from pycaret.classification import setup, compare_models, pull, save_model, load_model, predict_model
 
-# Function to preprocess data for modeling
 def preprocess_data(data, feature_type):
     if feature_type == 'Categorical':
         return data.astype('category')
@@ -61,7 +60,6 @@ def training_sub_tab():
         if st.button('Run Modeling'):
             setup_df = df.copy()
 
-            # Convert all columns to the specified data type
             if feature_type == 'Categorical':
                 setup_df = setup_df.astype('category')
             else:
@@ -82,17 +80,14 @@ def training_sub_tab():
 def testing_sub_tab():
     st.title("Testing Sub-Tab")
     
-    # Load the trained model (assuming it's always named "best_model.pkl")
     model_filename = "best_model"
     trained_model = load_model(model_filename)
 
-    # Upload data for prediction
     prediction_data_file = st.file_uploader("Upload Data for Prediction", type="csv")
     if prediction_data_file:
         prediction_data = pd.read_csv(prediction_data_file)
         st.dataframe(prediction_data)
 
-        # Choose feature data type
         feature_type = st.radio('Feature Data Type', ['Categorical', 'Numerical'])
 
         if st.button('Make Predictions'):
